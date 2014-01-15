@@ -1,0 +1,35 @@
+{
+  "name": "grunt-srttojson",
+  "description": "Converts subtitle files to JSON format",
+  "version": "0.1.0",
+  "homepage": "https://github.com/dfuller/srttojson",
+  "author": {
+    "name": "Dan Fuller",
+    "email": "dfuller@leanmeanfightingmachine.co.uk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dfuller/srttojson.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dfuller/srttojson/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/dfuller/srttojson/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
