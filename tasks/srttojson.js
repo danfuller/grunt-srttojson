@@ -58,7 +58,7 @@ module.exports = function(grunt) {
         output[i].text = {};
 
         for (var t = 2; t < lines.length; t++) {
-          output[i].text[t] = lines[t];
+          output[i].text[t-2] = lines[t];
         };
 
       });
