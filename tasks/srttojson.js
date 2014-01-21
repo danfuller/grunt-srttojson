@@ -15,10 +15,17 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('srttojson', 'Converts .srt ubtitle files to JSON format', function() {
 
+    var combinedOutput = '';
+    var options = this.options({
+      'combinedFilename' : 'combined',
+      'combined' : false,
+      'fileCount' : this.files.length
+    })
+
     grunt.file.defaultEncoding = 'utf8';
 
     // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
+    this.files.forEach(function(f,i) {
 
       var output = {}
 
@@ -63,13 +70,29 @@ module.exports = function(grunt) {
 
       });
 
-      // Write the destination file.
-      grunt.file.write(f.dest, JSON.stringify(output));
+      if(options.combined){
 
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+        combinedOutput += JSON.stringify(output);
+        if (i == options.fileCount -1){
+          // Write the destination file.
+          grunt.file.write(f.orig.dest+options.combinedFilename+f.orig.ext, combinedOutput);
+          // Print a success message.
+          grunt.log.writeln('Combined file '+f.orig.dest+options.combinedFilename+f.orig.ext+' created.');
+        }
+
+      } else {
+
+        // Write the destination file.
+        grunt.file.write(f.dest, JSON.stringify(output));
+        // Print a success message.
+        grunt.log.writeln('File "' + f.dest + '" created.');
+
+      }
 
     });
+
+
+
   });
   
 

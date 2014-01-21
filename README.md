@@ -22,9 +22,15 @@ grunt.loadNpmTasks('grunt-srttojson');
 ### Overview
 In your project's Gruntfile, add a section named `srttojson` to the data object passed into `grunt.initConfig()`.
 
+Use options combined and combinationFilename to collate all srt files into one.
+
 ```js
 grunt.initConfig({
   srttojson: {
+  	options: {
+      combinedFilename: 'myCombination'
+      combined: true
+  	},
     files: {
       expand: true,
       cwd: 'subs/',
