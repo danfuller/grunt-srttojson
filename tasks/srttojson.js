@@ -71,29 +71,22 @@ module.exports = function(grunt) {
       });
 
       if(options.combined){
-
         combinedOutput += JSON.stringify(output);
         if (i == options.fileCount -1){
-          // Write the destination file.
-          grunt.file.write(f.orig.dest+options.combinedFilename+f.orig.ext, combinedOutput);
-          // Print a success message.
-          grunt.log.writeln('Combined file '+f.orig.dest+options.combinedFilename+f.orig.ext+' created.');
+          writeFile(f.orig.dest+options.combinedFilename+f.orig.ext, combinedOutput)
         }
-
       } else {
-
-        // Write the destination file.
-        grunt.file.write(f.dest, JSON.stringify(output));
-        // Print a success message.
-        grunt.log.writeln('File "' + f.dest + '" created.');
-
+        writeFile(f.dest, JSON.stringify(output))
       }
 
     });
 
-
-
   });
+
+  function writeFile(path, output) {
+     grunt.file.write(path, output);
+     grunt.log.writeln('File '+path+' created.');
+  }
   
 
   function toMilliseconds(t, e){
